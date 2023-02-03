@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find iiwa_custom)/launch/original.launch" />
+    <node pkg="iiwa_custom" name="joint_to_pose" type="position_subscriber.py" output="screen" /> 
+</launch>

@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="mover" pkg="iiwa_moveit" type="zero.py" respawn="false" output="screen" ns="iiwa">
+  </node>
+
+</launch>

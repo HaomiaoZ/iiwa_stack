@@ -1,0 +1,31 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/camilo/custom_ws/devel/include/**",
+        "/home/camilo/catkin_ws/devel/include/**",
+        "/opt/ros/kinetic/include/**",
+        "/home/camilo/custom_ws/src/iiwa_stack/iiwa_custom/include/**",
+        "/home/camilo/custom_ws/src/iiwa_follow_trajectory/include/**",
+        "/home/camilo/custom_ws/src/iiwa_stack/iiwa_hw/include/**",
+        "/home/camilo/custom_ws/src/iiwa_stack/iiwa_ros/include/**",
+        "/home/camilo/catkin_ws/src/mapping/include/**",
+        "/home/camilo/catkin_ws/src/moveit_visual_tools/include/**",
+        "/home/camilo/catkin_ws/src/pleating_path_generator/include/**",
+        "/home/camilo/catkin_ws/src/power_bot_caris/include/**",
+        "/home/camilo/catkin_ws/src/rosserial/rosserial_server/include/**",
+        "/home/camilo/catkin_ws/src/rosserial/rosserial_test/include/**",
+        "/home/camilo/catkin_ws/src/testest/include/**",
+        "/home/camilo/catkin_ws/src/testing_controllers/include/**",
+        "/home/camilo/catkin_ws/src/universal_robot/ur_kinematics/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

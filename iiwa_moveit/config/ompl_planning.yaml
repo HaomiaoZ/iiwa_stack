@@ -2,21 +2,25 @@ planner_configs:
   SBLkConfigDefault:
     type: geometric::SBL
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    #longest_valid_segment_fraction: 0.01
   ESTkConfigDefault:
     type: geometric::EST
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0 setup()
     goal_bias: 0.05  # When close to goal select goal, with this probability. default: 0.05
+    #longest_valid_segment_fraction: 0.01
   LBKPIECEkConfigDefault:
     type: geometric::LBKPIECE
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
     border_fraction: 0.9  # Fraction of time focused on boarder default: 0.9
     min_valid_path_fraction: 0.5  # Accept partially valid moves above fraction. default: 0.5
+    #longest_valid_segment_fraction: 0.01
   BKPIECEkConfigDefault:
     type: geometric::BKPIECE
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
     border_fraction: 0.9  # Fraction of time focused on boarder default: 0.9
     failed_expansion_score_factor: 0.5  # When extending motion fails, scale score by factor. default: 0.5
     min_valid_path_fraction: 0.5  # Accept partially valid moves above fraction. default: 0.5
+    #longest_valid_segment_fraction: 0.01
   KPIECEkConfigDefault:
     type: geometric::KPIECE
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
@@ -24,18 +28,31 @@ planner_configs:
     border_fraction: 0.9  # Fraction of time focused on boarder default: 0.9 (0.0,1.]
     failed_expansion_score_factor: 0.5  # When extending motion fails, scale score by factor. default: 0.5
     min_valid_path_fraction: 0.5  # Accept partially valid moves above fraction. default: 0.5
+    #longest_valid_segment_fraction: 0.01
   RRTkConfigDefault:
     type: geometric::RRT
-    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    optimization_objective: PathLengthOptimizationObjective
+    range: 0.01  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
     goal_bias: 0.05  # When close to goal select goal, with this probability? default: 0.05
+    longest_valid_segment_fraction: 0.001
   RRTConnectkConfigDefault:
     type: geometric::RRTConnect
-    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    optimization_objective: PathLengthOptimizationObjective
+    range: 0.01  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    longest_valid_segment_fraction: 0.1
+  RRTConnectkConfigDefaultNoInterpolate:
+    type: geometric::RRTConnect
+    optimization_objective: PathLengthOptimizationObjective
+    range: 0.005  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    longest_valid_segment_fraction: 0.001
+    interpolate: False
   RRTstarkConfigDefault:
     type: geometric::RRTstar
-    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    optimization_objective: PathLengthOptimizationObjective
+    range: 0.15  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
     goal_bias: 0.05  # When close to goal select goal, with this probability? default: 0.05
     delay_collision_checking: 1  # Stop collision checking as soon as C-free parent found. default 1
+    longest_valid_segment_fraction: 0.01
   TRRTkConfigDefault:
     type: geometric::TRRT
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
@@ -47,11 +64,14 @@ planner_configs:
     frountier_threshold: 0.0  # dist new state to nearest neighbor to disqualify as frontier. default: 0.0 set in setup() 
     frountierNodeRatio: 0.1  # 1/10, or 1 nonfrontier for every 10 frontier. default: 0.1
     k_constant: 0.0  # value used to normalize expresssion. default: 0.0 set in setup()
+    #longest_valid_segment_fraction: 0.01
   PRMkConfigDefault:
     type: geometric::PRM
     max_nearest_neighbors: 10  # use k nearest neighbors. default: 10
+    #longest_valid_segment_fraction: 0.01
   PRMstarkConfigDefault:
     type: geometric::PRMstar
+    #longest_valid_segment_fraction: 0.01
 manipulator:
   planner_configs:
     - SBLkConfigDefault
@@ -61,6 +81,7 @@ manipulator:
     - KPIECEkConfigDefault
     - RRTkConfigDefault
     - RRTConnectkConfigDefault
+    - RRTConnectkConfigDefaultNoInterpolate
     - RRTstarkConfigDefault
     - TRRTkConfigDefault
     - PRMkConfigDefault
