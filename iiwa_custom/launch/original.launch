@@ -6,6 +6,9 @@
     <!-- By default, we do not start a database (it can be large) -->
     <arg name="db" default="false" />
     
+    <!-- argument to run with simulation (gazebo or not) -->
+    <arg name="sim" default="false" />
+
     <!-- hardware_interface to use : PositionJointInterface, EffortJointInterface, VelocityJointInterface. -->
     <arg name="hardware_interface" default="PositionJointInterface"/>
     <!-- name of the iiwa to use, useful in case of multiple robots. Every robot is gonna have its nodees/topics under a namespace with the same name. -->
@@ -20,7 +23,7 @@
     <remap from="robot_description" to="/$(arg robot_name)/robot_description" /> 
     <remap from="/get_planning_scene" to="/$(arg robot_name)/get_planning_scene" /> 
        <include if="$(arg exe)" file="$(find iiwa_moveit)/launch/moveit_planning_execution.launch">
-            <arg name="sim" value="false"/>
+            <arg name="sim" value="$(arg sim)"/>
             <arg name="hardware_interface" value="$(arg hardware_interface)"/>
 
         </include>
